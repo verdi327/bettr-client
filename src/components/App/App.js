@@ -12,53 +12,39 @@ import Sidebar from '../Sidebar/Sidebar'
 import './App.css';
 
 export default class App extends Component {
-  render() {
+  state = {
+    auth: true
+  }
+
+  renderLoggedInView = () => {
     return (
       <div className='app'>
-        <header className="app-header" role='banner'>
-          <Header/>
-        </header>
-        
+        <Header/>
         <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app'}/>
-
+        
         <div id='page-wrap'>
           <main className='app-main' role='main'>
             <Switch>
-              <Route
-                exact
-                path={'/'}
-                component={LandingPage}
-              />
-              <Route
-                path={'/login'}
-                component={LoginPage}
-              />
-              <Route
-                path={'/register'}
-                component={RegistrationPage}
-              />
-              <Route
-                path={'/new-cycle'}
-                component={NewCyclePage}
-              />
-              <Route
-                exact
-                path={'/workouts'}
-                component={WorkoutsPage}
-              />
-              <Route
-                exact
-                path={'/workouts/:day'}
-                component={WorkoutPage}
-              />
-              <Route
-                component={NotFoundPage}
-              />
+              <Route exact path={'/'} component={WorkoutsPage}/>
+              <Route path={'/login'} component={LoginPage}/>
+              <Route path={'/register'} component={RegistrationPage}/>
+              <Route path={'/new-cycle'} component={NewCyclePage}/>
+              <Route exact path={'/workouts'} component={WorkoutsPage}/>
+              <Route exact path={'/workouts/:day'} component={WorkoutPage}/>
+              <Route component={NotFoundPage}/>
             </Switch>
           </main>
         </div>
-        
       </div>
     );
+  }
+
+
+  render() {
+    if (this.state.auth) {
+      return this.renderLoggedInView()
+    } else {
+      return < LandingPage />
+    }
   }
 }
