@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "name": "bettr-fit",
+  "alias": "bettr-fit",
+  "routes": [
+      {
+        "src": "^/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": ".*",
+        "dest": "/index.html"
+      }
+  ]
+}
