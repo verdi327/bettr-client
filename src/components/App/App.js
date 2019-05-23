@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { Route, Switch } from 'react-router-dom'
+import PublicOnlyRoute from '../Utils/PublicOnlyRoute'
+import PrivateRoute from '../Utils/PrivateRoute'
 import LandingPage from '../../routes/LandingPage/LandingPage'
 import LoginPage from '../../routes/LoginPage/LoginPage'
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
@@ -9,42 +11,34 @@ import WorkoutPage from '../../routes/WorkoutPage/WorkoutPage'
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 import Header from '../Header/Header'
 import Sidebar from '../Sidebar/Sidebar'
+import TokenService from '../../services/TokenService'
 import './App.css';
 
 export default class App extends Component {
-  state = {
-    auth: true
-  }
 
-  renderLoggedInView = () => {
+  render() {
     return (
       <div className='app'>
         <Header/>
-        <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app'}/>
+        {TokenService.hasAuthToken()
+          ? <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app'}/>
+          : undefined
+        }
         
         <div id='page-wrap'>
           <main className='app-main' role='main'>
             <Switch>
-              <Route exact path={'/'} component={WorkoutsPage}/>
-              <Route path={'/login'} component={LoginPage}/>
-              <Route path={'/register'} component={RegistrationPage}/>
-              <Route path={'/new-cycle'} component={NewCyclePage}/>
-              <Route exact path={'/workouts'} component={WorkoutsPage}/>
-              <Route exact path={'/workouts/:day'} component={WorkoutPage}/>
+              <PublicOnlyRoute exact path={'/'} component={LandingPage}/>
+              <PublicOnlyRoute path={'/login'} component={LoginPage}/>
+              <PublicOnlyRoute path={'/register'} component={RegistrationPage}/>
+              <PrivateRoute path={'/new-cycle'} component={NewCyclePage}/>
+              <PrivateRoute exact path={'/workouts'} component={WorkoutsPage}/>
+              <PrivateRoute exact path={'/workouts/:day'} component={WorkoutPage}/>
               <Route component={NotFoundPage}/>
             </Switch>
           </main>
         </div>
       </div>
     );
-  }
-
-
-  render() {
-    if (this.state.auth) {
-      return this.renderLoggedInView()
-    } else {
-      return < LandingPage />
-    }
   }
 }

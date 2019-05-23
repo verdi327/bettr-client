@@ -8,7 +8,7 @@ export default class Header extends Component {
       <header className="app-header" role='banner'>
         <nav role='navigation'>
           <Link to='/workouts' className='logo'>
-            Bettr
+            bettr
           </Link>
         </nav>
       </header>

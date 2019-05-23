@@ -1,7 +1,7 @@
 .app-header nav {
   border: 1px solid black;
   padding: 10px;
-  background-color: aquamarine;
+  background-color: #2d3436;
 }
 
 .logo {
@@ -9,5 +9,5 @@
   cursor: pointer;
   font-size: 40px;
   font-weight: bolder;
-  color: black;
+  color: white;
 }

@@ -1,0 +1,24 @@
+.LandingPage {
+  display: flex;
+}
+
+.left {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left .button {
+  margin-right: 15px;
+  margin-top: 20px;
+}
+
+.right {
+  flex: 2;
+}
+
+.right img {
+  max-width: 100%;
+  height: auto;
+}
