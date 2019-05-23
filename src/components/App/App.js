@@ -12,32 +12,42 @@ import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 import Header from '../Header/Header'
 import Sidebar from '../Sidebar/Sidebar'
 import TokenService from '../../services/TokenService'
+import AppContext from '../../contexts/AppContext'
 import './App.css';
 
 export default class App extends Component {
+  state = {
+    hasAuth: TokenService.hasAuthToken()
+  }
+
+  updateSidebar = () => {
+    this.setState({hasAuth: TokenService.hasAuthToken()})
+  }
 
   render() {
     return (
       <div className='app'>
-        <Header/>
-        {TokenService.hasAuthToken()
-          ? <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app'}/>
-          : undefined
-        }
-        
-        <div id='page-wrap'>
-          <main className='app-main' role='main'>
-            <Switch>
-              <PublicOnlyRoute exact path={'/'} component={LandingPage}/>
-              <PublicOnlyRoute path={'/login'} component={LoginPage}/>
-              <PublicOnlyRoute path={'/register'} component={RegistrationPage}/>
-              <PrivateRoute path={'/new-cycle'} component={NewCyclePage}/>
-              <PrivateRoute exact path={'/workouts'} component={WorkoutsPage}/>
-              <PrivateRoute exact path={'/workouts/:day'} component={WorkoutPage}/>
-              <Route component={NotFoundPage}/>
-            </Switch>
-          </main>
-        </div>
+        <AppContext.Provider value={{updateSidebar: this.updateSidebar}}>
+          <Header/>
+          {this.state.hasAuth
+            ? <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app'}/>
+            : undefined
+          }
+          
+          <div id='page-wrap'>
+            <main className='app-main' role='main'>
+              <Switch>
+                <PublicOnlyRoute exact path={'/'} component={LandingPage}/>
+                <PublicOnlyRoute path={'/login'} component={LoginPage}/>
+                <PublicOnlyRoute path={'/register'} component={RegistrationPage}/>
+                <PrivateRoute path={'/new-cycle'} component={NewCyclePage}/>
+                <PrivateRoute exact path={'/workouts'} component={WorkoutsPage}/>
+                <PrivateRoute exact path={'/workouts/:day'} component={WorkoutPage}/>
+                <Route component={NotFoundPage}/>
+              </Switch>
+            </main>
+          </div>
+        </AppContext.Provider>
       </div>
     );
   }
