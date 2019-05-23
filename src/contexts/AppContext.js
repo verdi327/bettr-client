@@ -1,7 +1,8 @@
 import React from 'react'
 
 const AppContext = React.createContext({
-  updateSidebar: () => {}
+  updateSidebar: () => {},
+  currentUser: {}
 })
 
 export default AppContext;

@@ -2,11 +2,14 @@ import React, {Component} from 'react';
 import './RegistrationForm.css';
 import Validator from '../Validator/Validator'
 import TokenService from '../../services/TokenService'
+import AppContext from '../../contexts/AppContext'
   
 export default class RegistrationForm extends Component {
   static defaultProps = {
     onRegistrationSuccess: () => {}
   }
+
+  static contextType = AppContext
 
   state = {
     full_name: '', full_name_valid: false,
@@ -19,9 +22,13 @@ export default class RegistrationForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('registration form submitted');
     this.setState({error: null})
+    const {full_name, email} = this.state
+    const user = {full_name, email}
+    console.log('registration form submitted');
+    
     TokenService.saveAuthToken('abc123')
+    this.context.currentUser = user
     this.props.onRegistrationSuccess()
   }
 

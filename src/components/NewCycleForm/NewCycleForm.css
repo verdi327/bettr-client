@@ -1,0 +1,7 @@
+.js-new-cycle-form label {
+  margin: 5px 0;
+}
+
+.js-new-cycle-form input[type='radio'] {
+  margin-right: 5px;
+}

@@ -104,7 +104,11 @@ button:disabled {
 
 /* basic form styling */
 
-.form-group label {
+fieldset {
+  border: none;
+}
+
+label {
   display:block;
 }
 
@@ -112,7 +116,7 @@ button:disabled {
   margin: 15px 0;
 }
 
-input {
+input[type='text'], input[type='password'] {
   height: 20px;
   width: 100%;
   height: 40px;
