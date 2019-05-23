@@ -7,7 +7,7 @@ export default class Header extends Component {
     return (
       <header className="app-header" role='banner'>
         <nav role='navigation'>
-          <Link to='/workouts' className='logo'>
+          <Link to='/' className='logo'>
             bettr
           </Link>
         </nav>
