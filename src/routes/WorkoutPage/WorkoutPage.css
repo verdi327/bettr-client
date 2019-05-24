@@ -1,0 +1,51 @@
+.workout-day-header {
+  min-height: 40px;
+  font-size: 18px;
+  background: grey;
+  display: flex;
+  align-items: center;
+  font-weight: bolder;
+  color: white;
+  padding-left: 10px;
+  font-style: italic
+}
+
+.workout-sub-nav{
+  display: flex;
+}
+
+.workout-sub-nav .button {
+  background: white;
+  color: black;
+  font-weight: bolder;
+  font-size: 18px;
+  border: 1px solid lightgray;
+}
+
+.workout-sub-nav .button.tabActive {
+  background: #0984e3;
+  border: none;
+}
+
+.workout-focus {
+  font-size: 20px;
+  line-height: 1.3em;
+}
+
+.WorkoutPage section {
+  padding: 25px;
+}
+
+.workout-group {
+  margin: 20px 0;
+  font-size: 20px;
+  line-height: 1.3em;
+}
+
+section .workout-group:nth-child(1) {
+  margin-top: 0px;
+}
+
+.mark-complete {
+  margin-top: 30px;
+}

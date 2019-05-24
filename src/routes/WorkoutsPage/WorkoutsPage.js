@@ -9,8 +9,8 @@ import WorkoutListItem from '../../components/WorkoutListItem/WorkoutListItem'
 
 export default class WorkoutsPage extends Component {
   state = {
-    workouts: Workouts.three.slice(0, 7),
-    week: 2
+    workouts: Workouts.list,
+    week: 1
   }
 
   findActive = () => {
