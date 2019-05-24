@@ -5,30 +5,30 @@ export default class NewCycleForm extends Component {
 
   state = {
     error: null,
-    sex: '',
-    training_freq: '',
-    training_exp: '',
+    sex: 'male',
+    training_freq: '3',
+    training_exp: 'beg',
     injuries: [],
   }
   
-  validateForm = () => {
-    const {sex, training_freq, training_exp} = this.state
-    if (!sex || !training_freq || !training_exp) {
-      this.setState({
-        formValid: false,
-        error: 'Sex, Training Frequency and Training Experience are all required fields'
-      })
-    }
-    return true
-  }
+  // validateForm = () => {
+  //   const {sex, training_freq, training_exp} = this.state
+  //   if (!sex || !training_freq || !training_exp) {
+  //     this.setState({
+  //       formValid: false,
+  //       error: 'Sex, Training Frequency and Training Experience are all required fields'
+  //     })
+  //   }
+  //   return true
+  // }
   
   handleSubmit = (e) => {
     e.preventDefault();
     this.setState({error: null})
-    const valid = this.validateForm()
-    if (!valid) {
-      return
-    }
+    // const valid = this.validateForm()
+    // if (!valid) {
+    //   return
+    // }
     console.log('new cycle form submitted')
     this.props.onCycleSuccess()
   }
@@ -59,13 +59,13 @@ export default class NewCycleForm extends Component {
 
         <div className='form-group'>
           <fieldset id='sex' onChange={this.handleChange}>
-            <legend>Sex</legend>
+            <legend>What is your biological sex?</legend>
             <label>
-              <input type='radio' name='sex' value='male'/>
+              <input type='radio' name='sex' value='male' checked={this.state.sex === 'male'}/>
               Male
             </label>
             <label>
-              <input type='radio' name='sex' value='female'/>
+              <input type='radio' name='sex' value='female' checked={this.state.sex === 'female'}/>
               Female
             </label>
           </fieldset>
@@ -75,15 +75,15 @@ export default class NewCycleForm extends Component {
           <fieldset id='training_freq' onChange={this.handleChange}>
             <legend>How Often Do You Like to Train?</legend>
             <label>
-              <input type='radio' name='training_freq' value='3'/>
+              <input type='radio' name='training_freq' value='3' checked={this.state.training_freq === '3'}/>
               3 x per week
             </label>
             <label>
-              <input type='radio' name='training_freq' value='4'/>
+              <input type='radio' name='training_freq' value='4' checked={this.state.training_freq === '4'}/>
               4 x per week
             </label>
             <label>
-              <input type='radio' name='training_freq' value='5'/>
+              <input type='radio' name='training_freq' value='5' checked={this.state.training_freq === '5'}/>
               5 x per week
             </label>
           </fieldset>
@@ -93,15 +93,15 @@ export default class NewCycleForm extends Component {
           <fieldset id='training_exp' onChange={this.handleChange}>
             <legend>How new are you to training?</legend>
             <label>
-              <input type='radio' name='training_exp' value='beg'/>
+              <input type='radio' name='training_exp' value='beg' checked={this.state.training_exp === 'beg'}/>
               Novice - have trained in a weight room for less than a year
             </label>
             <label>
-              <input type='radio' name='training_exp' value='int'/>
+              <input type='radio' name='training_exp' value='int' checked={this.state.training_exp === 'int'}/>
               Experienced - have trained consistently for 1-3 years
             </label>
             <label>
-              <input type='radio' name='training_exp' value='adv'/>
+              <input type='radio' name='training_exp' value='adv' checked={this.state.training_exp === 'adv'}/>
               Very Experienced - have trained consistently for 3+ years
             </label>
           </fieldset>
@@ -132,7 +132,7 @@ export default class NewCycleForm extends Component {
             </label>
             <label>
               <input type='checkbox' name='injuries' value=''/>
-              None that I can't work through!
+              No limiting injuries
             </label>
           </fieldset>
         </div>

@@ -42,7 +42,7 @@ export default class App extends Component {
                 <PublicOnlyRoute path={'/register'} component={RegistrationPage}/>
                 <PrivateRoute path={'/new-cycle'} component={NewCyclePage}/>
                 <PrivateRoute exact path={'/workouts'} component={WorkoutsPage}/>
-                <PrivateRoute exact path={'/workouts/:day'} component={WorkoutPage}/>
+                <PrivateRoute exact path={'/workouts/:workout_id'} component={WorkoutPage}/>
                 <Route component={NotFoundPage}/>
               </Switch>
             </main>

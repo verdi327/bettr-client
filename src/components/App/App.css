@@ -10,8 +10,7 @@ ul {
 
 .app-main {
   max-width: 1000px;
-  margin: 30px auto;
-  padding: 0 10px;
+  margin: 0 auto;
   border: 1px solid black;
 }
 
@@ -100,6 +99,10 @@ ul {
 button:disabled {
   background-color: grey;
   cursor: not-allowed
+}
+
+.button.full {
+  width: 100%;
 }
 
 /* basic form styling */

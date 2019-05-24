@@ -1,0 +1,23 @@
+.workout-week-header {
+  min-height: 40px;
+  font-size: 18px;
+  background: grey;
+  display: flex;
+  align-items: center;
+  font-weight: bolder;
+  color: white;
+  padding-left: 10px;
+  font-style: italic
+}
+
+.pagination {
+  margin: 20px 0;
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.pagination .button:nth-child(1) {
+  margin-right: 8px;
+}

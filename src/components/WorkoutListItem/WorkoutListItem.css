@@ -1,0 +1,24 @@
+.WorkoutListItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  min-height: 80px;
+  font-size: 30px;
+}
+
+.WorkoutListItem.completed {
+  background-color: #b2bec3;
+}
+
+.WorkoutListItem.active {
+  background-color: #74b9ff;
+}
+
+.workout-day, .workout-type, .workout-subtype {
+  width: 100%;
+}
