@@ -24,6 +24,10 @@ export default class WorkoutPage extends Component {
     this.setState({tabActive: e.target.innerHTML})
   }
 
+  setButtonText(workout){
+    return workout.completed ? 'Mark Incomplete' : 'Mark Complete'
+  }
+
   renderWorkoutDetails = () => {
     const {workout} = this.state;
     switch(workout.type){
@@ -59,7 +63,7 @@ export default class WorkoutPage extends Component {
             : this.renderWorkoutFocus()
           }
           <div className='mark-complete' style={tabActive === 'Focus' ? {display: 'none'} : {display: 'block'}}>
-            <button className='button full'>Mark Complete</button>
+            <button className='button full'>{this.setButtonText(workout)}</button>
           </div>
         </section>
       </section>
