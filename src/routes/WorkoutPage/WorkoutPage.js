@@ -46,12 +46,42 @@ export default class WorkoutPage extends Component {
     )
   }
 
+  toggleMarkComplete = () => {
+    // need to make ajax call and update backend
+
+    let workout = this.state.workout
+    workout.completed = !workout.completed
+    this.setState({
+      workout: {...workout}
+    }, this.redirectToWorkoutsPage)
+  }
+
+  redirectToWorkoutsPage() {
+    const { history } = this.props
+    history.push('/workouts')
+  }
+
+  renderMarkComplete = () => {
+    const {workout, tabActive} = this.state
+
+    if (tabActive === 'Focus' || workout.type === 'rest') {
+      return <></>
+    } else {
+      return (
+        <div className='mark-complete'>
+          <button className='button full' onClick={this.toggleMarkComplete}>{this.setButtonText(workout)}</button>
+        </div>
+      )
+    }
+  }
+
   render() {
     const {workout, tabActive} = this.state
     return (
       <section className='WorkoutPage'>
         <div className='workout-day-header'>
-          Day {workout.day} of 56
+          <span>Day {workout.day} of 56</span>&nbsp;-&nbsp;
+          <span>{workout.type} {workout.sub_type}</span>
         </div>
         <div className='workout-sub-nav'>
           <button className={`button full ${tabActive === 'Details' ? 'tabActive' : ''}`} onClick={this.setActive}>Details</button>
@@ -62,9 +92,7 @@ export default class WorkoutPage extends Component {
             ? this.renderWorkoutDetails()
             : this.renderWorkoutFocus()
           }
-          <div className='mark-complete' style={tabActive === 'Focus' ? {display: 'none'} : {display: 'block'}}>
-            <button className='button full'>{this.setButtonText(workout)}</button>
-          </div>
+          {this.renderMarkComplete()}
         </section>
       </section>
     )

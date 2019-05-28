@@ -1,19 +1,8 @@
 import React, {Component} from 'react';
 import './HybridTemplate.css';
+import {renderMainWorkout} from '../Utils/Utils'
   
 export default class HybridTemplate extends Component {
-  renderMain = (workoutStr) => {
-    const lines = workoutStr.split(',')
-    return lines.map((line, i) => {
-      if (line.trim() === '') {
-        return <p className='spacer' key={i}>{line}</p>
-      } else {
-        return <p key={i}>{line}</p>
-      }
-      
-    })
-  }
-
   render() {
     const {workout} = this.props
     return (
@@ -25,7 +14,7 @@ export default class HybridTemplate extends Component {
 
         <div className='workout-group'>
           <h3>Main</h3>
-          {this.renderMain(workout.main)}
+          {renderMainWorkout(workout.main)}
         </div>
       </>
     )

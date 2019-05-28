@@ -136,3 +136,9 @@ input[type='text'], input[type='password'] {
   color: red;
   margin: 10px 0;
 }
+
+/* basic section styling */
+
+section.content {
+  padding: 25px;
+}

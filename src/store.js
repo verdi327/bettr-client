@@ -75,7 +75,7 @@ const Workouts = {
       sub_type: 'endurance',
       completed: false,
       warm_up: 'Start with myofacial work (foam roller, lax ball etc.) followed by light calistenics or animal flow movements. Then pick whatever cardio movement you intend to do and spend at least 5 minutes gradually increasing your heart rate. You should break a sweat.',
-      main: 'Pick a cardio movement(s) like running, rowing or biking. Your goal is to work for 30-60 minutes continuously at 70-80% effort. You can combine movements into a circuit fashion or pick a single movement.',
+      main: `Pick a cardio movement (jog, bike, row etc)\nPick an accessory (kb swing, burpee, farmer carry)\n5 minutes of cardio movement\n10-15 reps or 300ft of accessory movement\nrest 1-2 minutes\nx 4-5 sets @ 70-75% effort`,
       focus: "The goal for today is building cardio endurance. Endurance is built by gradually increasing how long you can continuously move. Importantly, you don't want to push too hard, rather stay in the 70-80% effort range to build the correct aerobic adaptations.  Long and strong should be your mantra."
     },
     {
@@ -129,7 +129,7 @@ const Workouts = {
       sub_type: 'intensity',
       completed: false,
       warm_up: 'Spend at least 15-20 minutes to warm up properly. Start with myofacial work (foam roller, lax ball etc.) followed by light calistenics or animal flow movements. You should break a slight sweat. Finally, do a practice round of the movements in the main block but with lighter loads.',
-      main: "Pronated Pull-Up, build to a heavy set of 3, ,rest as needed, ,For Time,10 Dumbbell Overhead Lunges,12 Toes to Bar,400m Run,x 3 rounds ",
+      main: "For Time:\n50/30 Calorie Bike\n\nDirectly Into...\n\n3 Rounds:\n20 Knees to Chest\n15 Push-Ups\n\nDirectly Into...\n50/30 Calorie Bike",
       focus: "The goal for today is building intensity. Intensity means completing the most amount of work you can do in the shortest amount of time. These workouts are hard by design and you will be tested.  Try not to hit muscle failure at any one time as the goal is to always be moving.  And remember, it's good to push yourself, but not to the point of injury - be smart!"
     },
     {

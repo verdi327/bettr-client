@@ -1,0 +1,55 @@
+.user-info, .cycle-info {
+  margin-bottom: 30px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-info div {
+  margin: 5px 0;
+}
+
+.user-info img.round {
+  border-radius: 50%;
+}
+
+.cycle-info .sub-header{
+  background: lightgray;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cycle-stats {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid lightgrey;
+  padding: 15px 0;
+}
+
+.cycle-stats .card {
+  border: 2px solid black;
+  min-width: 30%;
+}
+
+.cycle-stats .card-header {
+  background: lightgray;
+  padding: 8px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.cycle-stats .card-body {
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+}
+
+
+

@@ -19,7 +19,7 @@ export default class NewCyclePage extends Component {
   render() {
     
     return (
-      <section className='NewCyclePage'>
+      <section className='NewCyclePage content'>
         <h2>Hi, John</h2>
         <p>Let's build you a new personalized training plan</p>
 

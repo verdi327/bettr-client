@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './CardioTemplate.css';
+import {renderMainWorkout} from '../Utils/Utils'
   
 export default class CardioTemplate extends Component {
   render() {
@@ -13,7 +14,7 @@ export default class CardioTemplate extends Component {
 
         <div className='workout-group'>
           <h3>Main</h3>
-          {workout.main}
+          {renderMainWorkout(workout.main)}
         </div>
       </>
     )

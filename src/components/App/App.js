@@ -8,6 +8,7 @@ import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
 import NewCyclePage from '../../routes/NewCyclePage/NewCyclePage'
 import WorkoutsPage from '../../routes/WorkoutsPage/WorkoutsPage'
 import WorkoutPage from '../../routes/WorkoutPage/WorkoutPage'
+import ProfilePage from '../../routes/ProfilePage/ProfilePage'
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 import Header from '../Header/Header'
 import Sidebar from '../Sidebar/Sidebar'
@@ -43,6 +44,7 @@ export default class App extends Component {
                 <PrivateRoute path={'/new-cycle'} component={NewCyclePage}/>
                 <PrivateRoute exact path={'/workouts'} component={WorkoutsPage}/>
                 <PrivateRoute exact path={'/workouts/:workout_id'} component={WorkoutPage}/>
+                <PrivateRoute path={'/profile'} component={ProfilePage}/>
                 <Route component={NotFoundPage}/>
               </Switch>
             </main>
