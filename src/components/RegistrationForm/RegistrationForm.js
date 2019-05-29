@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './RegistrationForm.css';
 import Validator from '../Validator/Validator'
 import AuthContext from '../../contexts/AuthContext'
+import AuthApiService from '../../services/auth-api-service'
   
 export default class RegistrationForm extends Component {
   static defaultProps = {
@@ -20,16 +21,22 @@ export default class RegistrationForm extends Component {
     validationError: {}
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     this.setState({error: null})
-    const {full_name, email, sex} = this.state
-    const user = {full_name, email, sex}
+    const {full_name, email, sex, password} = this.state
+    const newUser = {full_name, email, sex, password}
     console.log('registration form submitted');
-    
-    this.context.login('abc123')
-    this.context.setCurrentUser(user)
-    this.props.onRegistrationSuccess()
+
+    try {
+      const savedUser = await AuthApiService.createUser(newUser)
+      this.context.login(savedUser.authToken)
+      delete savedUser.authToken
+      this.context.setCurrentUser(savedUser)
+      this.props.onRegistrationSuccess()
+    } catch(err) {
+      this.setState({error: err.message})
+    }
   }
 
   handleChange = ({target: {name, value}}) => {

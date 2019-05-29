@@ -91,31 +91,31 @@ export default class NewCycleForm extends Component {
           <fieldset id='injuries'>
             <legend>Do you have any injuries that limit what you can do?</legend>
             <label>
-              <input type='checkbox' name='injuries' value='shoulder' checked={this.isInjured('shoulder')} onChange={this.handleInjuryChange} required/>
+              <input type='checkbox' name='injuries' value='shoulder' checked={this.isInjured('shoulder')} onChange={this.handleInjuryChange}/>
               Shoulders - left, right or both
             </label>
             <label>
-              <input type='checkbox' name='injuries' value='hip' checked={this.isInjured('hip')} onChange={this.handleInjuryChange} required/>
+              <input type='checkbox' name='injuries' value='hip' checked={this.isInjured('hip')} onChange={this.handleInjuryChange}/>
               Hips - left, right or both
             </label>
             <label>
-              <input type='checkbox' name='injuries' value='knee' checked={this.isInjured('knee')} onChange={this.handleInjuryChange} required/>
+              <input type='checkbox' name='injuries' value='knee' checked={this.isInjured('knee')} onChange={this.handleInjuryChange}/>
               Knees - left, right or both
             </label>
             <label>
-              <input type='checkbox' name='injuries' value='ankle' checked={this.isInjured('ankle')} onChange={this.handleInjuryChange} required/>
+              <input type='checkbox' name='injuries' value='ankle' checked={this.isInjured('ankle')} onChange={this.handleInjuryChange}/>
               Ankles - left, right or both
             </label>
             <label>
-              <input type='checkbox' name='injuries' value='lower_back' checked={this.isInjured('lower_back')} onChange={this.handleInjuryChange} required/>
+              <input type='checkbox' name='injuries' value='lower_back' checked={this.isInjured('lower_back')} onChange={this.handleInjuryChange}/>
               Lower Back
             </label>
             <label>
-              <input type='checkbox' name='injuries' value='upper_back' checked={this.isInjured('upper_back')} onChange={this.handleInjuryChange} required/>
+              <input type='checkbox' name='injuries' value='upper_back' checked={this.isInjured('upper_back')} onChange={this.handleInjuryChange}/>
               Upper Back
             </label>
             <label>
-              <input type='checkbox' name='injuries' value='none' checked={this.isInjured('none')} onChange={this.handleInjuryChange} required/>
+              <input type='checkbox' name='injuries' value='none' checked={this.isInjured('none')} onChange={this.handleInjuryChange}/>
               No limiting injuries
             </label>
           </fieldset>

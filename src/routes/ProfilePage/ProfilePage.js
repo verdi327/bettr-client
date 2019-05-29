@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import './ProfilePage.css'
+// import gravatar from 'gravatar'
 
 export default class ProfilePage extends Component {
+  // const g = gravatar.url('michael.v.verdi@gmail.com', {s: '200', r: 'x', d: 'retro', protocol: 'https'}, true);
+
   state = {
     currentUser: {full_name: 'Michael Verdi', sex: 'male', training_freq: '4', training_exp: 'adv', avatar: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50'},
     currentCycle: {day: '15', phase: 'volume', completed_percent: '27'}

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './LoginForm.css';
 import AuthContext from '../../contexts/AuthContext'
+import AuthApiService from '../../services/auth-api-service'
 
   
 export default class LoginForm extends Component {
@@ -12,12 +13,18 @@ export default class LoginForm extends Component {
     password: ''
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     this.setState({error: null})
-    this.context.login('abc123')
-    // this.context.setCurrentUser = {full_name: 'foo bar', email: 'foo@bar.com'}
-    this.props.onLoginSuccess()
+    try {
+      const {email, password} = this.state;
+      const response = await AuthApiService.login(email, password)
+      this.context.login(response.authToken)
+      // this.context.setCurrentUser = {full_name: 'foo bar', email: 'foo@bar.com'}
+      this.props.onLoginSuccess()
+    } catch(err) {
+      this.setState({error: err.message})
+    }
   }
 
   handleChange = ({ target: { name, value } }) => {
