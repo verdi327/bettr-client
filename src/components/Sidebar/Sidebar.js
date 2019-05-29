@@ -2,11 +2,10 @@ import React, {Component} from 'react';
 import './Sidebar.css';
 import { slide as Menu } from "react-burger-menu";
 import { Link, Redirect } from 'react-router-dom'
-import TokenService from '../../services/TokenService'
-import AppContext from '../../contexts/AppContext'
+import AuthContext from '../../contexts/AuthContext'
   
 export default class Sidebar extends Component {
-  static contextType = AppContext;
+  static contextType = AuthContext;
 
   state = {
     isOpen: false,
@@ -26,11 +25,11 @@ export default class Sidebar extends Component {
   }
 
   logoutUser = () => {
-    TokenService.clearAuthToken();
+    this.context.logout();
     this.setState({
       isOpen: false,
       toLogin: true
-    }, this.context.updateSidebar())
+    })
   }
 
   render() {

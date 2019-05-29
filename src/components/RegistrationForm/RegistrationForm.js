@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import './RegistrationForm.css';
 import Validator from '../Validator/Validator'
-import TokenService from '../../services/TokenService'
-import AppContext from '../../contexts/AppContext'
+import AuthContext from '../../contexts/AuthContext'
   
 export default class RegistrationForm extends Component {
   static defaultProps = {
     onRegistrationSuccess: () => {}
   }
 
-  static contextType = AppContext
+  static contextType = AuthContext
 
   state = {
     full_name: '', full_name_valid: false,
@@ -17,18 +16,19 @@ export default class RegistrationForm extends Component {
     password: '', passwordValid: false,
     formValid: false,
     error: null,
+    sex: '',
     validationError: {}
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
     this.setState({error: null})
-    const {full_name, email} = this.state
-    const user = {full_name, email}
+    const {full_name, email, sex} = this.state
+    const user = {full_name, email, sex}
     console.log('registration form submitted');
     
-    TokenService.saveAuthToken('abc123')
-    this.context.currentUser = user
+    this.context.login('abc123')
+    this.context.setCurrentUser(user)
     this.props.onRegistrationSuccess()
   }
 
@@ -110,6 +110,20 @@ export default class RegistrationForm extends Component {
           <label htmlFor='full_name'>Full Name</label>
           < Validator isValid={full_name_valid} msg={validationError.full_name} />
           <input type='text' id='full_name' name='full_name' value={this.state.full_name} onChange={this.handleChange} onBlur={this.validateFullName}/>
+        </div>
+
+        <div className='form-group'>
+          <fieldset id='sex'>
+            <legend>Biological Sex</legend>
+            <label>
+              <input type='radio' name='sex' value='male' onChange={this.handleChange} checked={this.state.sex === 'male'} required/>
+              Male
+            </label>
+            <label>
+              <input type='radio' name='sex' value='female' onChange={this.handleChange} checked={this.state.sex === 'female'} required/>
+              Female
+            </label>
+          </fieldset>
         </div>
 
         <div className='form-group'>

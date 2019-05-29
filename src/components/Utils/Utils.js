@@ -10,3 +10,9 @@ export function renderMainWorkout(workoutStr){
     }
   })
 }
+
+export function firstName(full_name) {
+  if (full_name) {
+    return full_name.split(' ')[0]
+  }
+}

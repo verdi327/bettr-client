@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
-import AppContext from '../../contexts/AppContext'
 
 export default class LoginPage extends Component {
-  static contextType = AppContext
-
   static defaultProps = {
     location: {},
     history: {
@@ -15,7 +12,6 @@ export default class LoginPage extends Component {
   handleLoginSuccess = () => {
     const { location, history } = this.props
     const destination = (location.state || {}).from || '/'
-    this.context.updateSidebar()
     history.push(destination);
   }
   

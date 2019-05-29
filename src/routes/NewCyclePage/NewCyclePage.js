@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import AppContext from '../../contexts/AppContext'
+import AuthContext from '../../contexts/AuthContext'
 import NewCycleForm from '../../components/NewCycleForm/NewCycleForm'
+import {firstName} from '../../components/Utils/Utils'
 
 export default class NewCyclePage extends Component {
-  static contextType = AppContext
+  static contextType = AuthContext
 
   static defaultProps = {
     history: {
@@ -17,10 +18,10 @@ export default class NewCyclePage extends Component {
   }
 
   render() {
-    
+    const {currentUser} = this.context;
     return (
       <section className='NewCyclePage content'>
-        <h2>Hi, John</h2>
+        <h2>Hi, {firstName(currentUser.full_name)}</h2>
         <p>Let's build you a new personalized training plan</p>
 
         <NewCycleForm onCycleSuccess={this.handleCycleSuccess}/>

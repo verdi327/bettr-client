@@ -12,25 +12,17 @@ import ProfilePage from '../../routes/ProfilePage/ProfilePage'
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 import Header from '../Header/Header'
 import Sidebar from '../Sidebar/Sidebar'
-import TokenService from '../../services/TokenService'
-import AppContext from '../../contexts/AppContext'
+import AuthContext from '../../contexts/AuthContext'
 import './App.css';
 
 export default class App extends Component {
-  state = {
-    hasAuth: TokenService.hasAuthToken()
-  }
-
-  updateSidebar = () => {
-    this.setState({hasAuth: TokenService.hasAuthToken()})
-  }
+  static contextType = AuthContext;
 
   render() {
     return (
       <div className='app'>
-        <AppContext.Provider value={{updateSidebar: this.updateSidebar}}>
           <Header/>
-          {this.state.hasAuth
+          {this.context.hasAuth
             ? <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app'}/>
             : undefined
           }
@@ -49,7 +41,6 @@ export default class App extends Component {
               </Switch>
             </main>
           </div>
-        </AppContext.Provider>
       </div>
     );
   }

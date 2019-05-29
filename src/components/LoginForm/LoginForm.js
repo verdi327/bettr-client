@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import './LoginForm.css';
-import TokenService from '../../services/TokenService'
+import AuthContext from '../../contexts/AuthContext'
 
   
 export default class LoginForm extends Component {
+  static contextType = AuthContext
 
   state = {
     error: null,
@@ -14,7 +15,8 @@ export default class LoginForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.setState({error: null})
-    TokenService.saveAuthToken('abc123')
+    this.context.login('abc123')
+    // this.context.setCurrentUser = {full_name: 'foo bar', email: 'foo@bar.com'}
     this.props.onLoginSuccess()
   }
 
