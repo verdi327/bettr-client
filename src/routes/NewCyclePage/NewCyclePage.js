@@ -21,7 +21,7 @@ export default class NewCyclePage extends Component {
     const {currentUser} = this.context;
     return (
       <section className='NewCyclePage content'>
-        <h2>Hi, {firstName(currentUser.full_name)}</h2>
+        <h2>Hi, {currentUser ? firstName(currentUser.full_name) : ''}</h2>
         <p>Let's build you a new personalized training plan</p>
 
         <NewCycleForm onCycleSuccess={this.handleCycleSuccess}/>

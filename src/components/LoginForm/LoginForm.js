@@ -20,7 +20,7 @@ export default class LoginForm extends Component {
       const {email, password} = this.state;
       const response = await AuthApiService.login(email, password)
       this.context.login(response.authToken)
-      // this.context.setCurrentUser = {full_name: 'foo bar', email: 'foo@bar.com'}
+      this.context.setCurrentUser(response.user)
       this.props.onLoginSuccess()
     } catch(err) {
       this.setState({error: err.message})

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import TokenService from '../services/TokenService'
+import AuthApiService from '../services/auth-api-service'
 
 const AuthContext = React.createContext({
   logout: () => {},
@@ -16,9 +17,15 @@ export class AuthProvider extends Component {
     currentUser: null
   }
 
-  componentDidMount() {
-    // if TokenService.hasAuthToken()
-      // make call to /api/users/:user_id and set currentUser
+  async componentDidMount() {
+   this.getCurrentUser()
+  }
+
+  async getCurrentUser() {
+    if (TokenService.hasAuthToken()) {
+      const user = await AuthApiService.getCurrentUser()
+      this.setState({currentUser: user})
+    }
   }
   
   login = (token) => {
