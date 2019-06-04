@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import './WorkoutPage.css'
-import Workouts from '../../store'
 import WeightsTemplate from '../../components/WeightsTemplate/WeightsTemplate'
 import CardioTemplate from '../../components/CardioTemplate/CardioTemplate'
 import HybridTemplate from '../../components/HybridTemplate/HybridTemplate'
 import RestTemplate from '../../components/RestTemplate/RestTemplate'
+import WorkoutApiService from '../../services/workout-api-service';
 
 
 export default class WorkoutPage extends Component {
@@ -13,11 +13,11 @@ export default class WorkoutPage extends Component {
     tabActive: 'Details'
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const {match} = this.props
     const workout_id = Number(match.params.workout_id)
-    const foundWorkout = Workouts.detailed.find(workout => workout.id === workout_id)
-    this.setState({workout: {...foundWorkout}})
+    const workout = await WorkoutApiService.show(workout_id);
+    this.setState({workout})
   }
 
   setActive = (e) => {
@@ -80,7 +80,7 @@ export default class WorkoutPage extends Component {
     return (
       <section className='WorkoutPage'>
         <div className='workout-day-header'>
-          <span>Day {workout.day} of 56</span>&nbsp;-&nbsp;
+          <span>Day {workout.day} of 84</span>&nbsp;-&nbsp;
           <span>{workout.type} {workout.sub_type}</span>
         </div>
         <div className='workout-sub-nav'>

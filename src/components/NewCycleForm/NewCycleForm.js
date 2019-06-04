@@ -1,22 +1,28 @@
 import React, {Component} from 'react';
 import './NewCycleForm.css';
+import WorkoutApiService from '../../services/workout-api-service';
   
 export default class NewCycleForm extends Component {
 
   state = {
     error: null,
-    sex: '',
     training_freq: '',
     training_exp: '',
     injuries: [],
   }
   
   
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     this.setState({error: null})
-    console.log('new cycle form submitted')
-    this.props.onCycleSuccess()
+    const {training_exp, training_freq, injuries} = this.state;
+    const newCycle = {training_exp, training_freq, injuries};
+    try {
+      await WorkoutApiService.createCycle(newCycle)
+      this.props.onCycleSuccess()
+    } catch(err) {
+      this.setState({error: err.message})
+    }
   }
 
   handleChange = ({target: {name, value}}) => {

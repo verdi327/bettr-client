@@ -12,7 +12,7 @@ export default class NewCyclePage extends Component {
     },
   }
 
-  handleCycleSuccess = () => {
+  handleCycleSuccess = (workouts) => {
     const { history } = this.props
     history.push('/workouts')
   }

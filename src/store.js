@@ -62,7 +62,7 @@ const Workouts = {
       main_sets: '7-10',
       main_rest: 'as needed',
       main_reps: '2-3',
-      acc: ['Goblet Squat', 'Dumbbell Bench Press', 'Double KB Snatch'],
+      acc: ['Goblet Squat', 'Dumbbell Bench Press', 'Single Arm Kettlebell Overhead Press'],
       acc_sets: '3-4',
       acc_reps: '10-15',
       acc_rest: '1-2 minutes',
@@ -111,7 +111,7 @@ const Workouts = {
       type: 'weights',
       sub_type: 'volume',
       completed: false,
-      warm_up: 'Spend at least 10 minutes to warm up properly. Start with myofacial work (foam roller, lax ball etc.) followed by light calistenics or animal flow movements. You should break a slight sweat. Finally, do a few sets building in weight of the movements you will be completing in the main workout block.',
+      warm_up: 'Myofacial work (foam roller etc.)\nCalistenics or animal flow movements\nCorrectives\nComplete 1-2 sets building in weight of the movements you will be completing in the main workout block',
       main: ['Pause Barbell Front Squats', 'Pronated Pull-Ups'],
       main_sets: '3-4',
       main_rest: '1-2 minutes',
@@ -120,7 +120,7 @@ const Workouts = {
       acc_sets: '3-4',
       acc_reps: '10-15',
       acc_rest: '1-2 minutes',
-      focus: "The goal for today is building volume. Volume training is like traditional body building where the goal is to increase the overall size of the muscle. The key to mass gaining is to lift slightly heavier and heavier load in less and less time. So, before increasing the weight try either increasing the reps or decreasing the amount of rest. And remember, you should never miss a rep, always leave some in the tank!"
+      focus: 'The goal for today is building volume. Volume training is like traditional body building where the goal is to increase the overall size of the muscle. The key to muscle gaining is to increase work capacity by lifting slightly heavier loads in less and less time. So, before increasing the weight try either increasing the reps or decreasing the amount of rest. And remember, you should never miss a rep, always leave 1-2 reps in the tank!'
     },
     {
       id: 6,

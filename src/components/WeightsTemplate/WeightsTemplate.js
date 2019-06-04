@@ -26,7 +26,7 @@ export default class WeightsTemplate extends Component {
       )
     })
 
-    details.push(<p key={details.length}>rest: {workout.main_rest}</p>)
+    details.push(<p key={details.length}>rest {workout.main_rest}</p>)
     details.push(<p key={details.length+1}>x {workout.main_sets} sets</p>)
     return details
   }
@@ -35,16 +35,24 @@ export default class WeightsTemplate extends Component {
     const details =  workout.acc.map((exercise, i) => {
       let reps = workout.acc_reps
       if (/carry/i.test(exercise)) {
-        reps = '150 - 200ft'
+        reps = workout.acc_distance
+      } else if (/plank/i.test(exercise)) {
+        reps = workout.acc_time
       }
       return (
         <p key={i}>{reps} {exercise}</p>
       )
     })
 
-    details.push(<p key={details.length}>rest: {workout.acc_rest}</p>)
+    details.push(<p key={details.length}>rest {workout.acc_rest}</p>)
     details.push(<p key={details.length+1}>x {workout.acc_sets} sets</p>)
     return details
+  }
+
+  renderWarmUp = workout => {
+    const lines = workout.warm_up.split('\n');
+    const html = lines.map((line, i) => <p key={i}>{line}</p>)
+    return html;
   }
 
   render() {
@@ -53,7 +61,7 @@ export default class WeightsTemplate extends Component {
       <>
         <div className='workout-group'>
           <h3>Warm Up</h3>
-          <p>{workout.warm_up}</p>
+          {this.renderWarmUp(workout)}
         </div>
 
         <div className='workout-group'>
