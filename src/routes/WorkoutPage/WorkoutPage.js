@@ -46,14 +46,15 @@ export default class WorkoutPage extends Component {
     )
   }
 
-  toggleMarkComplete = () => {
-    // need to make ajax call and update backend
-
-    let workout = this.state.workout
-    workout.completed = !workout.completed
-    this.setState({
-      workout: {...workout}
-    }, this.redirectToWorkoutsPage)
+  toggleMarkComplete = async () => {
+    const workout = this.state.workout
+    const updates = {completed: !workout.completed}
+    try {
+      await WorkoutApiService.update(workout.id, updates)
+      this.redirectToWorkoutsPage();
+    } catch(err) {
+      this.setState({error: err.message})
+    }
   }
 
   redirectToWorkoutsPage() {
@@ -80,7 +81,7 @@ export default class WorkoutPage extends Component {
     return (
       <section className='WorkoutPage'>
         <div className='workout-day-header'>
-          <span>Day {workout.day} of 84</span>&nbsp;-&nbsp;
+          <span>Day {(workout.week*7) - (7-workout.day)} of 84</span>&nbsp;-&nbsp;
           <span>{workout.type} {workout.sub_type}</span>
         </div>
         <div className='workout-sub-nav'>

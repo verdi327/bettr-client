@@ -25,7 +25,7 @@ export default class WorkoutListItem extends Component {
     return (
       <Link to={`/workouts/${workout.id}`} className={this.setClass(workout)}>
         <div className='workout-day'>
-          Day {workout.day}
+          Day {(workout.week*7) - (7-workout.day)}
         </div>
         <div className='workout-type'>
           <h4>{this.capitalize(workout.type)}</h4>

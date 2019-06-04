@@ -6,6 +6,7 @@ import LandingPage from '../../routes/LandingPage/LandingPage'
 import LoginPage from '../../routes/LoginPage/LoginPage'
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage'
 import NewCyclePage from '../../routes/NewCyclePage/NewCyclePage'
+import CompletedCyclePage from '../../routes/CompletedCyclePage/CompletedCyclePage'
 import WorkoutsPage from '../../routes/WorkoutsPage/WorkoutsPage'
 import WorkoutPage from '../../routes/WorkoutPage/WorkoutPage'
 import ProfilePage from '../../routes/ProfilePage/ProfilePage'
@@ -34,6 +35,7 @@ export default class App extends Component {
                 <PublicOnlyRoute path={'/login'} component={LoginPage}/>
                 <PublicOnlyRoute path={'/register'} component={RegistrationPage}/>
                 <PrivateRoute path={'/new-cycle'} component={NewCyclePage}/>
+                <PrivateRoute path={'/completed-cycle'} component={CompletedCyclePage}/>
                 <PrivateRoute exact path={'/workouts'} component={WorkoutsPage}/>
                 <PrivateRoute exact path={'/workouts/:workout_id'} component={WorkoutPage}/>
                 <PrivateRoute path={'/profile'} component={ProfilePage}/>

@@ -14,7 +14,7 @@ export default class HybridTemplate extends Component {
 
         <div className='workout-group'>
           <h3>Main</h3>
-          {renderMainWorkout(workout.main)}
+          {renderMainWorkout(workout.main[0])}
         </div>
       </>
     )
