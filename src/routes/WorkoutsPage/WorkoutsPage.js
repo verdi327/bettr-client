@@ -3,8 +3,9 @@ import './WorkoutsPage.css'
 import WorkoutListItem from '../../components/WorkoutListItem/WorkoutListItem'
 import {Redirect} from 'react-router-dom'
 import WorkoutApiService from '../../services/workout-api-service'
+import { withAppContext } from '../../contexts/AppContext';
 
-export default class WorkoutsPage extends Component {
+class WorkoutsPage extends Component {
   state = {
     workouts: null,
     week: 1,
@@ -13,10 +14,12 @@ export default class WorkoutsPage extends Component {
   }
 
   async componentDidMount() {
+    const {setLoading} = this.props.appContext
     try {
+      setLoading(true);
       const response = await WorkoutApiService.list()
       const {workouts, week, activeWorkoutId} = response
-      this.setState({workouts, week, activeWorkoutId})
+      this.setState({workouts, week, activeWorkoutId}, setLoading(false))
     } catch(err) {
       this.setState({error: err.message})
     }
@@ -63,7 +66,7 @@ export default class WorkoutsPage extends Component {
 
   markCycleComplete = async () => {
     const cycle_id = this.state.workouts[0].cycle_id;
-    console.log('cycle id', cycle_id)
+
     try {
       await WorkoutApiService.markCycleComplete(cycle_id)
       this.props.history.push('/completed-cycle')
@@ -93,3 +96,4 @@ export default class WorkoutsPage extends Component {
   }
 }
 
+export default withAppContext(WorkoutsPage);

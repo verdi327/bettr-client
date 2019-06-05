@@ -14,14 +14,17 @@ import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 import Header from '../Header/Header'
 import Sidebar from '../Sidebar/Sidebar'
 import AuthContext from '../../contexts/AuthContext'
+import Loader from '../../components/Loader/Loader'
+import {withAppContext} from '../../contexts/AppContext'
 import './App.css';
 
-export default class App extends Component {
+class App extends Component {
   static contextType = AuthContext;
 
   render() {
     return (
       <div className='app'>
+          <Loader/>
           <Header/>
           {this.context.hasAuth
             ? <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app'}/>
@@ -47,3 +50,6 @@ export default class App extends Component {
     );
   }
 }
+
+// export default App;
+export default withAppContext(App);

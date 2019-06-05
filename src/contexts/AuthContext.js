@@ -55,3 +55,11 @@ export class AuthProvider extends Component {
     )
   }
 }
+
+export const withAuthContext = Component => (
+  props => (
+    <AuthContext.Consumer>
+      {context => <Component authContext={context} {...props} />}
+    </AuthContext.Consumer>
+  )
+)

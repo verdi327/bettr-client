@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import './NewCycleForm.css';
 import WorkoutApiService from '../../services/workout-api-service';
+import { withAppContext } from '../../contexts/AppContext';
   
-export default class NewCycleForm extends Component {
-
+class NewCycleForm extends Component {
   state = {
     error: null,
     training_freq: '',
@@ -18,7 +18,10 @@ export default class NewCycleForm extends Component {
     const {training_exp, training_freq, injuries} = this.state;
     const newCycle = {training_exp, training_freq, injuries};
     try {
+      const {setLoading} = this.props.appContext
+      setLoading(true)
       await WorkoutApiService.createCycle(newCycle)
+      setLoading(false)
       this.props.onCycleSuccess()
     } catch(err) {
       this.setState({error: err.message})
@@ -134,4 +137,5 @@ export default class NewCycleForm extends Component {
     )
   }
 }
-  
+
+export default withAppContext(NewCycleForm)

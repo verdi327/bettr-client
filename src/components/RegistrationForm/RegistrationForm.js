@@ -3,12 +3,9 @@ import './RegistrationForm.css';
 import Validator from '../Validator/Validator'
 import AuthContext from '../../contexts/AuthContext'
 import AuthApiService from '../../services/auth-api-service'
+import { withAppContext } from '../../contexts/AppContext';
   
-export default class RegistrationForm extends Component {
-  static defaultProps = {
-    onRegistrationSuccess: () => {}
-  }
-
+class RegistrationForm extends Component {
   static contextType = AuthContext
 
   state = {
@@ -26,14 +23,16 @@ export default class RegistrationForm extends Component {
     this.setState({error: null})
     const {full_name, email, sex, password} = this.state
     const newUser = {full_name, email, sex, password}
-    console.log('registration form submitted');
 
     try {
+      const {setLoading} = this.props.appContext
+      setLoading(true)
       const savedUser = await AuthApiService.createUser(newUser)
       this.context.login(savedUser.authToken)
       delete savedUser.authToken
       this.context.setCurrentUser(savedUser)
-      this.props.onRegistrationSuccess()
+      setLoading(true)
+      // this will load /workouts which will then re-direct to /new-cycle as there are no workouts
     } catch(err) {
       this.setState({error: err.message})
     }
@@ -152,4 +151,5 @@ export default class RegistrationForm extends Component {
     )
   }
 }
-  
+
+export default withAppContext(RegistrationForm);

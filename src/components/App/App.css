@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+.app {
+  position: relative;
+  min-height: 100%;
+}
+
 ul {
   list-style: none;
 }
@@ -16,6 +21,7 @@ ul {
 #page-wrap{
   /* Prevent sidebar from showing a scrollbar on page */
   overflow: auto;
+  margin-top:69px;
 }
 
 /* Individual item */

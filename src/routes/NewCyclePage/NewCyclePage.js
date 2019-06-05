@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import AuthContext from '../../contexts/AuthContext'
 import NewCycleForm from '../../components/NewCycleForm/NewCycleForm'
 import {firstName} from '../../components/Utils/Utils'
+import { Redirect } from 'react-router-dom'
 
 export default class NewCyclePage extends Component {
   static contextType = AuthContext
@@ -19,14 +20,20 @@ export default class NewCyclePage extends Component {
 
   render() {
     const {currentUser} = this.context;
-    return (
-      <section className='NewCyclePage content'>
-        <h2>Hi, {currentUser ? firstName(currentUser.full_name) : ''}</h2>
-        <p>Let's build you a new personalized training plan</p>
-
-        <NewCycleForm onCycleSuccess={this.handleCycleSuccess}/>
-
-      </section>
-    )
+    if (!currentUser) {
+      return <></>
+    } else if (currentUser.hasCurrentCycle) {
+      return < Redirect to='/workouts' />
+    } else {
+      return (
+        <section className='NewCyclePage content'>
+          <h2>Hi, {currentUser ? firstName(currentUser.full_name) : ''}</h2>
+          <p>Let's build you a new personalized training plan</p>
+  
+          <NewCycleForm onCycleSuccess={this.handleCycleSuccess}/>
+  
+        </section>
+      )
+    }
   }
 }
