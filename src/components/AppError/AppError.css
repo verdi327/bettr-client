@@ -1,0 +1,32 @@
+.unexpected-error {
+  height: 100vh;
+  padding: 20px;
+  background: aquamarine;
+}
+
+.unexpected-error .top {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.unexpected-error .bottom {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.unexpected-error .bottom i {
+  font-size: 60px;
+  margin-top:20px;
+}
+
+
+
+.emoji {
+  font-size: 60px;
+}

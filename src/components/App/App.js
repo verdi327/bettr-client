@@ -15,7 +15,7 @@ import Header from '../Header/Header'
 import Sidebar from '../Sidebar/Sidebar'
 import AuthContext from '../../contexts/AuthContext'
 import Loader from '../../components/Loader/Loader'
-import {withAppContext} from '../../contexts/AppContext'
+import { withAppContext } from '../../contexts/AppContext'
 import './App.css';
 
 class App extends Component {

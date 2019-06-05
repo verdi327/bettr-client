@@ -19,7 +19,9 @@
     "generate": "node ./node_modules/react-component-scaffold/index.js",
     "predeploy": "npm run build",
     "deploy": "now ./build",
-    "postdeploy": "now alias -A ./build/now.json"
+    "postdeploy": "now alias -A ./build/now.json",
+    "serve": "serve -s build",
+    "preserve": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,6 +39,7 @@
     ]
   },
   "devDependencies": {
-    "react-component-scaffold": "^1.0.6"
+    "react-component-scaffold": "^1.0.6",
+    "serve": "^11.0.1"
   }
 }

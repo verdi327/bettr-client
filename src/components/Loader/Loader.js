@@ -8,7 +8,7 @@ function Loader(props) {
   if (isLoading) {
     return (
       <div className='loader'>
-        <Spinner name="line-scale-pulse-out" color='white'/>
+        <Spinner name="line-scale-pulse-out" color='white' fadeIn='quarter'/>
         <p>hang tight</p>
       </div>
     )
