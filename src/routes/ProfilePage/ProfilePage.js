@@ -1,25 +1,38 @@
 import React, { Component } from 'react'
 import './ProfilePage.css'
-// import gravatar from 'gravatar'
+import gravatar from 'gravatar'
+import UserApiService from '../../services/user-api-service'
+import AuthContext from '../../contexts/AuthContext'
 
 export default class ProfilePage extends Component {
-  // const g = gravatar.url('michael.v.verdi@gmail.com', {s: '200', r: 'x', d: 'retro', protocol: 'https'}, true);
-
+  static contextType = AuthContext
+  
   state = {
-    currentUser: {full_name: 'Michael Verdi', sex: 'male', training_freq: '4', training_exp: 'adv', avatar: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50'},
-    currentCycle: {day: '15', phase: 'volume', completed_percent: '27'}
+    currentUser: {},
+    currentCycle: {}
   }
   
-  componentDidMount(){
-    // ajax call to backend
+  async componentDidMount(){
+    const user_id = this.context.currentUser.id
+    try {
+      const res = await UserApiService.getProfile(user_id)
+      this.setState({currentUser: res.currentUser, currentCycle: res.currentCycle})
+    } catch(err) {
+      this.setState({error: err.message})
+    }
+  }
+
+  avatar(email) {
+    return gravatar.url(email, {s: '200', r: 'x', d: 'retro', protocol: 'https'}, true);
   }
 
   render() {
+    const email = this.context.currentUser.email
     const {currentUser, currentCycle} = this.state
     return (
       <section className='ProfilePage content'>
         <div className='user-info'>
-          <div><img src={currentUser.avatar} className='round' alt='profile'/></div>
+          <div><img src={this.avatar(email)} className='round' alt='profile'/></div>
           <div><h3>{currentUser.full_name}</h3></div>
           <div className='user-details'>
             <span>{currentUser.sex}</span>&nbsp;|&nbsp;
