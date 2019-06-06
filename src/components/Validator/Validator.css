@@ -1,6 +1,7 @@
 /* styling for Validator Component */
 
 .form-validation-error {
-  color: red;
+  color: var(--error);
   margin: 5px 0;
+  font-size: 1.2em;
 }

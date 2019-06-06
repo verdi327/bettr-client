@@ -13,7 +13,7 @@
 
 body {
   background: var(--background);
-  color: var(--primary);
+  color: var(--white);
   font-family: "Roboto";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -33,7 +33,11 @@ h2 {
   font-size: 2em;
 }
 
-label {
+h2, h3, h4, h5, h6 {
+  color: var(--primary);
+}
+
+label, legend {
   font-size: 1.4em;
 }
 
@@ -89,6 +93,11 @@ input[type='text'], input[type='password'] {
   font-size: 20px;
 }
 
+input[type='radio'], input[type='checkbox'] {
+  transform: scale(1.5);
+  margin-right: 7px;
+}
+
 .form-controls {
   margin-top: 25px;
 }
@@ -96,8 +105,8 @@ input[type='text'], input[type='password'] {
 /* basic error message styling */
 
 .error-msg {
-  font-size: 18px;
-  color: red;
+  font-size: 1.2em;
+  color: var(--error);
   margin: 10px 0;
 }
 

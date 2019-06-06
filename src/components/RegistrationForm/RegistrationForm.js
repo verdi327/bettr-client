@@ -145,7 +145,7 @@ class RegistrationForm extends Component {
         </div>
 
         <div className='form-controls'>
-          <button disabled={!formValid} type='submit' className='button'>Create Account</button>
+          <button disabled={!formValid} type='submit' className='button full outline'>Create Account</button>
         </div>
       </form>
     )
