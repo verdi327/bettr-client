@@ -1,11 +1,11 @@
 .workout-day-header {
   min-height: 40px;
   font-size: 18px;
-  background: grey;
+  background: var(--background2);
   display: flex;
   align-items: center;
   font-weight: bolder;
-  color: white;
+  color: var(--primary);
   padding-left: 10px;
   font-style: italic
 }
@@ -15,21 +15,19 @@
 }
 
 .workout-sub-nav .button {
-  background: white;
-  color: black;
-  font-weight: bolder;
-  font-size: 18px;
-  border: 1px solid lightgray;
+  background: var(--overlay);
+  color: var(--background);
 }
 
 .workout-sub-nav .button.tabActive {
-  background: #0984e3;
-  border: none;
+  color: var(--white);
+  border: 2px solid var(--secondary);
 }
 
 .workout-focus {
   font-size: 20px;
   line-height: 1.3em;
+  color: var(--white);
 }
 
 .WorkoutPage section {
@@ -40,6 +38,11 @@
   margin: 20px 0;
   font-size: 20px;
   line-height: 1.3em;
+  color: var(--white);
+}
+
+.workout-group h3{
+  color: var(--primary)
 }
 
 section .workout-group:nth-child(1) {

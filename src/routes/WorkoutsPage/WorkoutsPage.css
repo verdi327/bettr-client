@@ -1,23 +1,43 @@
 .workout-week-header {
   min-height: 40px;
   font-size: 18px;
-  background: grey;
+  background: var(--background2);
   display: flex;
   align-items: center;
   font-weight: bolder;
-  color: white;
+  color: var(--primary);
   padding-left: 10px;
   font-style: italic
 }
 
 .pagination {
-  margin: 20px 0;
-  padding: 10px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  position: fixed;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
 }
 
-.pagination .button:nth-child(1) {
-  margin-right: 8px;
+.pagination i.fa-arrow-right {
+  margin-left: 7px;
+}
+
+.pagination i.fa-arrow-left, i.fa-check {
+  margin-right: 7px;
+}
+
+.button.large {
+  padding: 25px 0;
+  width: 100%;
+  border: 2px solid var(--background);
+}
+
+.left{
+  margin-right: 3px;
+}
+
+.right{
+  margin-left: 3px;
 }

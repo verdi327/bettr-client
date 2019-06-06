@@ -25,7 +25,7 @@ export default class AppError extends Component {
           
           <div className='bottom'>
             <h4>try refreshing the page</h4>
-            <i class="fas fa-sync-alt"></i>
+            <i className="fas fa-sync-alt"></i>
           </div>
         </div>
 

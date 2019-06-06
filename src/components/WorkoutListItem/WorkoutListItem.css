@@ -1,24 +1,39 @@
 .WorkoutListItem {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  border: 1px solid black;
   cursor: pointer;
   text-decoration: none;
-  color: black;
+  color: var(--white);
+  background: var(--background);
+  border-bottom: 2px solid var(--black);
   padding: 10px;
   min-height: 80px;
   font-size: 23px;
+  text-align: center;
 }
 
-.WorkoutListItem.completed {
-  background-color: #b2bec3;
+.workout-day, .workout-status {
+  flex: 1;
+}
+
+.workout-type {
+  flex: 3;
+}
+
+.WorkoutListItem.completed i {
+  color: var(--primary)
+}
+
+.WorkoutListItem.rest-day i {
+  color: var(--black)
 }
 
 .WorkoutListItem.active {
-  background-color: #74b9ff;
+  background: var(--overlay);
 }
 
 .workout-day, .workout-type, .workout-subtype {
   width: 100%;
+  text-transform: uppercase;
 }

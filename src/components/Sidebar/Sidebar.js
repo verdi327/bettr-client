@@ -42,9 +42,18 @@ export default class Sidebar extends Component {
           isOpen={this.state.isOpen}
           onStateChange={(state) => this.handleStateChange(state)}
         >
-          <Link onClick={() => this.closeMenu()}  to='/workouts'>Workouts</Link>
-          <Link onClick={() => this.closeMenu()}  to='/profile'>Profile</Link>
-          <Link onClick={() => this.logoutUser()} to='#'>Logout</Link>
+          <Link onClick={() => this.closeMenu()}  to='/workouts'>
+            <i className="fas fa-dumbbell"></i>
+            Workouts
+          </Link>
+          <Link onClick={() => this.closeMenu()}  to='/profile'>
+            <i className="fas fa-user-circle"></i>
+            Profile
+          </Link>
+          <Link className='logout-link' onClick={() => this.logoutUser()} to='#'>
+            <i className="fas fa-sign-out-alt"></i>
+            Logout
+          </Link>
         </Menu>
       )
     }

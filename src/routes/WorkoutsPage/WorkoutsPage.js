@@ -37,19 +37,34 @@ class WorkoutsPage extends Component {
   renderPaginationLinks = () => {
     const {week} = this.state
     if (week === 1) {
-      return <button onClick={() => this.fetchWorkouts(week+1)} className='button full'>View Next Week</button>
+      return <button onClick={() => this.fetchWorkouts(week+1)} className='button primary-variant large'>
+        Next Week
+        <i className="fas fa-arrow-right"></i>
+      </button>
     } else if (week > 1 && week < 12) {
       return (
         <>
-          <button onClick={() => this.fetchWorkouts(week-1)} className='button full'>View Prev Week </button>
-          <button onClick={() => this.fetchWorkouts(week+1)} className='button full'>View Next Week </button>
+          <button onClick={() => this.fetchWorkouts(week-1)} className='button primary-variant large'>
+            <i className="fas fa-arrow-left"></i>
+            Prev Week
+          </button>
+          <button onClick={() => this.fetchWorkouts(week+1)} className='button primary-variant large'>
+            Next Week
+            <i className="fas fa-arrow-right"></i>
+          </button>
         </>
       )
     } else {
       return (
         <>
-          <button onClick={() => this.fetchWorkouts(week-1)} className='button full'>View Prev Week</button>
-          <button onClick={this.markCycleComplete} className='button full'>Complete Cycle</button>
+          <button onClick={() => this.fetchWorkouts(week-1)} className='button primary-variant large'>
+            <i className="fas fa-arrow-left"></i>
+            Prev Week
+          </button>
+          <button onClick={this.markCycleComplete} className='button primary-variant large'>
+            <i className="fas fa-check"></i>
+            Complete
+          </button>
         </>
       )
     }

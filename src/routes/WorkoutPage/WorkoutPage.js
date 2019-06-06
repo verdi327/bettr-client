@@ -70,7 +70,7 @@ export default class WorkoutPage extends Component {
     } else {
       return (
         <div className='mark-complete'>
-          <button className='button full' onClick={this.toggleMarkComplete}>{this.setButtonText(workout)}</button>
+          <button className='button full outline' onClick={this.toggleMarkComplete}>{this.setButtonText(workout)}</button>
         </div>
       )
     }

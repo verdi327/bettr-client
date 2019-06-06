@@ -9,28 +9,36 @@
   align-items: center;
 }
 
+.user-info h2 {
+  text-transform: capitalize;
+}
+
 .user-info div {
   margin: 5px 0;
+  font-size: 20px;
 }
 
 .user-info img.round {
   border-radius: 50%;
+  border: 5px solid var(--secondary);
 }
 
 .cycle-info .sub-header{
-  background: lightgray;
+  background: var(--header-background);
   padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--white);
 }
 
 .cycle-stats {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  border: 1px solid lightgrey;
+  border: 1px solid var(--header-background);
   padding: 15px 0;
+  background: var(--overlay);
 }
 
 .cycle-stats .card {
@@ -39,10 +47,11 @@
 }
 
 .cycle-stats .card-header {
-  background: lightgray;
+  background: var(--header-background);
   padding: 8px;
   text-align: center;
   font-weight: bolder;
+  color: var(--white);
 }
 
 .cycle-stats .card-body {

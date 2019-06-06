@@ -12,10 +12,12 @@ export default class WorkoutListItem extends Component {
   setClass = (workout) => {
     let klass = 'WorkoutListItem'
 
-    if (workout.completed) {
+    if (workout.completed && workout.type !== 'rest') {
       klass += ' completed'
     } else if (this.props.active) {
       klass += ' active'
+    } else if (workout.type === 'rest') {
+      klass += ' rest-day'
     }
     return klass
   }
@@ -28,10 +30,11 @@ export default class WorkoutListItem extends Component {
           Day {(workout.week*7) - (7-workout.day)}
         </div>
         <div className='workout-type'>
-          <h4>{this.capitalize(workout.type)}</h4>
+          <div>{workout.type}</div>
+          <div>{workout.sub_type}</div>
         </div>
-        <div className='workout-subtype'>
-          <h4>{this.capitalize(workout.sub_type)}</h4>
+        <div className='workout-status'>
+          <i className="fas fa-check"></i>
         </div>
       </Link>
     )

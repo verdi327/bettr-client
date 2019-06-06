@@ -1,17 +1,108 @@
+:root {
+  --background: #121212;
+  --primary: #BB86FC;
+  --primary-variant: #3700B3;
+  --secondary: #03DAC5;
+  --error: #CF6679;
+  --white: #ffffff;
+  --black: #000000;
+  --background2: #1f1f1f;
+  --overlay: #413a4b;
+  --header-background: #1F1A24;
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  background: var(--background);
+  color: var(--primary);
+  font-family: "Roboto";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 html, body, #root, .app {
   height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+label {
+  font-size: 1.4em;
+}
+
+.button {
+  background-color: var(--accent);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.4em;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  outline: 0;
+}
+
+button:disabled {
+  background-color: grey;
+  cursor: not-allowed
+}
+
+.button.full {
+  width: 100%;
+}
+
+.button.primary-variant {
+  background: var(--primary-variant)
+}
+
+.button.outline {
+  border: 3px solid var(--overlay);
+}
+
+/* basic form styling */
+
+fieldset {
+  border: none;
+}
+
+label {
+  display:block;
+}
+
+.form-group {
+  margin: 15px 0;
+}
+
+input[type='text'], input[type='password'] {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+}
+
+.form-controls {
+  margin-top: 25px;
+}
+
+/* basic error message styling */
+
+.error-msg {
+  font-size: 18px;
+  color: red;
+  margin: 10px 0;
+}
+
+/* basic section styling */
+
+section.content {
+  padding: 25px;
 }

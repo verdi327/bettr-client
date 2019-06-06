@@ -12,6 +12,20 @@ class ProfilePage extends Component {
     currentCycle: {}
   }
 
+  async componentDidMount() {
+    if (this.props.authContext.currentUser) {
+      const user_id = this.props.authContext.currentUser.id
+      try {
+        const {setLoading} = this.props.appContext
+        setLoading(true)
+        const res = await UserApiService.getProfile(user_id)
+        this.setState({user: res.currentUser, currentCycle: res.currentCycle}, setLoading(false))
+      } catch(err) {
+        this.setState({error: err.message})
+      }
+    }
+  }
+
   async componentDidUpdate(prevProps, prevContext) {
     if (prevProps.authContext.currentUser === null
         && this.props.authContext.currentUser !== null) {
@@ -41,7 +55,7 @@ class ProfilePage extends Component {
         <section className='ProfilePage content'>
           <div className='user-info'>
             <div><img src={this.avatar(email)} className='round' alt='profile'/></div>
-            <div><h3>{user.full_name}</h3></div>
+            <div><h2>{user.full_name}</h2></div>
             <div className='user-details'>
               <span>{user.sex}</span>&nbsp;|&nbsp;
               <span>{user.training_freq}x per week</span>&nbsp;|&nbsp;
