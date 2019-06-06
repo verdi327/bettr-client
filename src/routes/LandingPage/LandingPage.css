@@ -1,24 +1,71 @@
 .LandingPage {
-  display: flex;
+  background: url('./landing-page-bg-1.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-.left {
-  flex: 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.LandingPage section {
+  height: 100vh;
 }
 
-.left .button {
-  margin-right: 15px;
+.LandingPage #above-the-fold {
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+}
+
+.hero {
+  padding: 30px;
+}
+
+.hero h1 {
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.hero h1.small {
+  font-size: 27px;
+  letter-spacing: 2px;
+  margin-top: -8px;
+  margin-bottom: -8px;
+  text-transform: uppercase;
+}
+
+.hero .details {
   margin-top: 20px;
 }
 
-.right {
-  flex: 2;
+.hero .details p {
+  font-size: 20px;
+  font-weight: 500;
 }
 
-.right img {
-  max-width: 100%;
-  height: auto;
+.hero .details span {
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.hero .details p:nth-child(1) {
+  margin-bottom: 30px;
+}
+
+.cta-buttons {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 2px;
+}
+
+.cta-buttons a {
+  width: 100%;
+}
+
+.cta-buttons button {
+  border: 1px solid var(--white);
+  background: var(--background);
+  padding: 20px 32px;
 }

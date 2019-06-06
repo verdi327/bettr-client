@@ -15,7 +15,7 @@ class RegistrationForm extends Component {
     formValid: false,
     error: null,
     sex: '',
-    validationError: {}
+    validationError: {},
   }
 
   handleSubmit = async (e) => {

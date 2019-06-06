@@ -28,7 +28,7 @@ export default class NewCyclePage extends Component {
       return (
         <section className='NewCyclePage content'>
           <h2>Hi, {currentUser ? firstName(currentUser.full_name) : ''}</h2>
-          <p>Let's build you a new personalized training plan</p>
+          <p className='tagline'>Let's build you a new training plan</p>
   
           <NewCycleForm onCycleSuccess={this.handleCycleSuccess}/>
   

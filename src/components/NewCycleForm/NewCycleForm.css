@@ -1,7 +1,35 @@
+p.tagline {
+  margin-top: 3px;
+  font-size: 19px;
+}
+
+.js-new-cycle-form .details {
+  padding: 10px;
+  background: var(--overlay);
+  margin: 15px 0;
+  font-size: 1.2em;
+  border-radius: 2px;
+}
+
+.details div {
+  margin: 10px 0;
+}
+
 .js-new-cycle-form label {
   margin: 5px 0;
 }
 
-.js-new-cycle-form input[type='radio'] {
+
+.js-new-cycle-form .form-controls {
+  display: flex;
+}
+
+.js-new-cycle-form button i.fa-arrow-left {
   margin-right: 5px;
 }
+
+.js-new-cycle-form button i.fa-arrow-right {
+  margin-left: 5px;
+}
+
+
