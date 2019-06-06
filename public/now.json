@@ -2,6 +2,12 @@
   "version": 2,
   "name": "bettr-fit",
   "alias": "bettr-fit",
+  "now": {
+    "env": {
+      "REACT_APP_API_ENDPOINT": "https://bettr-fit-api.herokuapp.com/api",
+      "REACT_APP_TOKEN_KEY": "bettr-fit-auth-token"
+    }
+  },
   "routes": [
       {
         "src": "^/static/(.*)",
@@ -10,6 +16,10 @@
       {
         "src": ".*",
         "dest": "/index.html"
+      },
+      {
+        "src": "^/manifest.json$",
+        "dest": "/manifest.json"
       }
   ]
 }
