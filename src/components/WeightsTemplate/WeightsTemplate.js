@@ -22,7 +22,7 @@ import YouTube from 'react-youtube';
 //   acc_rest: '1-2 minutes'
 // }
 
-Modal.setAppElement('#root');
+if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 export default class WeightsTemplate extends Component {
   state = {

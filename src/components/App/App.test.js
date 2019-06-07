@@ -5,6 +5,7 @@ import { BrowserRouter, Switch } from 'react-router-dom'
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
+  div.setAttribute('id', 'root');
   ReactDOM.render(
     <BrowserRouter>
       <Switch>

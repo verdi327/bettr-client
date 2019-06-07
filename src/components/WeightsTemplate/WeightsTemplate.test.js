@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import WeightsTemplate from './WeightsTemplate';
+import { BrowserRouter, Link } from 'react-router-dom'
 
 describe('WeightsTemplate Component', () => {
   it('renders without crashing', () => {
@@ -21,7 +22,13 @@ describe('WeightsTemplate Component', () => {
       acc_rest: '1-2 minutes'
     }
     const div = document.createElement('div');
-    ReactDOM.render(< WeightsTemplate workout={workout} />, div);
+    ReactDOM.render(
+    <BrowserRouter>
+      < WeightsTemplate workout={workout}>
+        <Link to='some-route'>some route</Link>
+      </WeightsTemplate>
+    </BrowserRouter>
+    , div);
     ReactDOM.unmountComponentAtNode(div);
   });
 })
