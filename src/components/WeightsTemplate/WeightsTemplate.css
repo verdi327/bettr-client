@@ -1,1 +1,37 @@
-/* styling for WeightsTemplate Component */
+a.exercise-title {
+  text-decoration: none;
+  color: var(--white);
+}
+
+.exercise-modal-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: var(--background);
+}
+
+.exercise-modal-content {
+  position: absolute;
+  top: 80px;
+  left: 40px;
+  right: 40px;
+  bottom: 150px;
+  /* background: var(--overlay);  */
+  overflow: auto; 
+  /* border-radius: 4px;  */
+  outline: none;
+  /* padding: 20px; */
+}
+
+.modal-content h2 {
+  font-size: 1.5em;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.modal-content button.outline {
+  margin-top: 30px;
+  border: 3px solid var(--secondary)
+}
