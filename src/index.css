@@ -94,7 +94,6 @@ input[type='text'], input[type='password'] {
 }
 
 input[type='radio'], input[type='checkbox'] {
-  transform: scale(1.5);
   margin-right: 7px;
 }
 
