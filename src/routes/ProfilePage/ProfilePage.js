@@ -3,25 +3,27 @@ import './ProfilePage.css'
 import gravatar from 'gravatar'
 import UserApiService from '../../services/user-api-service'
 import { withAuthContext } from '../../contexts/AuthContext'
-import { withAppContext } from '../../contexts/AppContext';
+import { withAppContext } from '../../contexts/AppContext'
+import PageError from '../../components/PageError/PageError'
 
 class ProfilePage extends Component {
   
   state = {
     user: {},
-    currentCycle: {}
+    currentCycle: {},
+    error: null
   }
 
   async componentDidMount() {
     if (this.props.authContext.currentUser) {
       const user_id = this.props.authContext.currentUser.id
+      const {setLoading} = this.props.appContext
       try {
-        const {setLoading} = this.props.appContext
         setLoading(true)
         const res = await UserApiService.getProfile(user_id)
         this.setState({user: res.currentUser, currentCycle: res.currentCycle}, setLoading(false))
       } catch(err) {
-        this.setState({error: err.message})
+        this.setState({error: err.message}, setLoading(false))
       }
     }
   }
@@ -36,9 +38,13 @@ class ProfilePage extends Component {
             const res = await UserApiService.getProfile(user_id)
             this.setState({user: res.currentUser, currentCycle: res.currentCycle}, setLoading(false))
           } catch(err) {
-            this.setState({error: err.message})
+            this.setState({error: err.message}, setLoading(false))
           }
     }
+  }
+
+  componentWillUnmount() {
+    this.setState({error: null})
   }
 
   avatar(email) {
@@ -46,7 +52,9 @@ class ProfilePage extends Component {
   }
 
   render() {
-    if (!this.props.authContext.currentUser) {
+    if (this.state.error) {
+      return <PageError page='profile' />
+    } else if (!this.props.authContext.currentUser) {
       return <></>
     } else {
       const email = this.props.authContext.currentUser.email
@@ -61,7 +69,6 @@ class ProfilePage extends Component {
               <span>{user.training_freq}x per week</span>&nbsp;|&nbsp;
               <span>{user.training_exp}</span>
             </div>
-            
           </div>
 
           <div className='cycle-info'>

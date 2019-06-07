@@ -3,7 +3,8 @@ import './WorkoutsPage.css'
 import WorkoutListItem from '../../components/WorkoutListItem/WorkoutListItem'
 import {Redirect} from 'react-router-dom'
 import WorkoutApiService from '../../services/workout-api-service'
-import { withAppContext } from '../../contexts/AppContext';
+import { withAppContext } from '../../contexts/AppContext'
+import PageError from '../../components/PageError/PageError'
 
 class WorkoutsPage extends Component {
   state = {
@@ -21,8 +22,14 @@ class WorkoutsPage extends Component {
       const {workouts, week, activeWorkoutId} = response
       this.setState({workouts, week, activeWorkoutId}, setLoading(false))
     } catch(err) {
-      this.setState({error: err.message})
+      this.setState({error: err.message}, setLoading(false))
     }
+  }
+
+  componentWillUnmount() {
+    const {setLoading} = this.props.appContext
+    setLoading(false)
+    this.setState({error: null})
   }
 
   renderWorkoutList = () => {
@@ -71,29 +78,35 @@ class WorkoutsPage extends Component {
   }
 
   async fetchWorkouts(week) {
+    const {setLoading} = this.props.appContext
     try {
+      setLoading(true)
       const response = await WorkoutApiService.list(week)
-      this.setState({workouts: response.workouts, week: response.week})
+      this.setState({workouts: response.workouts, week: response.week}, setLoading(false))
     } catch(err) {
-      this.setState({error: err.message})
+      this.setState({error: err.message}, setLoading(false))
     }
   }
 
   markCycleComplete = async () => {
     const cycle_id = this.state.workouts[0].cycle_id;
+    const {setLoading} = this.props.appContext
 
     try {
+      setLoading(true)
       await WorkoutApiService.markCycleComplete(cycle_id)
       this.props.history.push('/completed-cycle')
     } catch(err) {
-      this.setState({error: err.message})
+      this.setState({error: err.message}, setLoading(false))
     }
   }
 
 
   render() {
-    const {workouts, week} = this.state;
-    if (workouts && !workouts.length) {
+    const {workouts, week, error} = this.state;
+    if (error) {
+      return <PageError page='workouts'/>
+    } else if (workouts && !workouts.length) {
       return <Redirect to='/new-cycle' />
     } else {
       return (

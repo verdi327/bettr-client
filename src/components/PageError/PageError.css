@@ -1,0 +1,13 @@
+.page-error {
+  padding: 25px;
+  margin: 25px;
+  background: var(--overlay);
+  font-size: 1.3em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.page-error > * {
+  margin-bottom: 10px;
+}

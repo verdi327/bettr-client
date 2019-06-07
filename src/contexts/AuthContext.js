@@ -6,15 +6,18 @@ const AuthContext = React.createContext({
   logout: () => {},
   login: () => {},
   setCurrentUser: () => {},
+  clearError: () => {},
   hasAuth: false,
-  currentUser: null
+  currentUser: null,
+  error: null
 });
 export default AuthContext
 
 export class AuthProvider extends Component {
   state = {
     hasAuth: TokenService.hasAuthToken(),
-    currentUser: null
+    currentUser: null,
+    error: null
   }
 
   async componentDidMount() {
@@ -23,8 +26,12 @@ export class AuthProvider extends Component {
 
   async getCurrentUser() {
     if (TokenService.hasAuthToken()) {
-      const user = await AuthApiService.getCurrentUser()
-      this.setState({currentUser: user})
+      try {
+        const user = await AuthApiService.getCurrentUser()
+        this.setState({currentUser: user})
+      } catch(err) {
+        this.setState({error: err.message})
+      }
     }
   }
   
@@ -42,6 +49,10 @@ export class AuthProvider extends Component {
     this.setState({currentUser: user})
   }
 
+  clearError = () => {
+    this.setState({error: null})
+  }
+
   render() {
     return (
       <AuthContext.Provider value={{
@@ -49,6 +60,7 @@ export class AuthProvider extends Component {
         login: this.login,
         logout: this.logout,
         setCurrentUser: this.setCurrentUser,
+        clearError: this.clearError
       }}>
         {this.props.children}
       </AuthContext.Provider>

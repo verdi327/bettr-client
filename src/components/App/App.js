@@ -21,6 +21,25 @@ import './App.css';
 class App extends Component {
   static contextType = AuthContext;
 
+  renderAuthError = () => {
+    return (
+      <div className='auth-error'>
+        <span role='img' aria-label='bad news icon' className='emoji'>😞</span>
+        <h4>Oh no!</h4>
+        <p>
+          There was an error trying to fetch your user information.
+        </p>
+        <p>
+          Try logging out and back in to see if the problem resolves itself.
+        </p>
+      </div>
+    )
+  }
+
+  componentWillUnmount() {
+    this.context.clearError();
+  }
+
   render() {
     return (
       <div className='app'>
@@ -33,6 +52,8 @@ class App extends Component {
           
           <div id='page-wrap'>
             <main className='app-main' role='main'>
+              {this.context.error ? this.renderAuthError() : undefined}
+
               <Switch>
                 <PublicOnlyRoute exact path={'/'} component={LandingPage}/>
                 <PublicOnlyRoute path={'/login'} component={LoginPage}/>
