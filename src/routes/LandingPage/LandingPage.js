@@ -12,15 +12,15 @@ export default class LandingPage extends Component {
             <h1>Routine</h1>
             <h1 className='small'>Is The</h1>
             <h1>Enemy</h1>
+          </div>
 
-            <div className='details'>
-              <p>
-                <span>bettr</span> uses the latest evidence based training principles to build fully customized 12 week training programs
-              </p>
-              <p>
-                A bettr plan is one that balances strength and cardio training while optimizing for efficiency, aesthetic and quality of movement.
-              </p>
-            </div>
+          <div className='details'>
+            <p>
+              <span>bettr</span> uses the latest evidence based training principles to build fully customized 12 week training programs
+            </p>
+            <p>
+              A bettr plan is one that balances strength and cardio training while optimizing for efficiency, aesthetic and quality of movement.
+            </p>
           </div>
 
           <div className='cta-buttons'>

@@ -12,11 +12,8 @@
 
 .LandingPage #above-the-fold {
   display: flex;
-  /* justify-content: center; */
+  align-items: center;
   flex-direction: column;
-}
-
-.hero {
   padding: 30px;
 }
 
@@ -33,31 +30,34 @@
   text-transform: uppercase;
 }
 
-.hero .details {
+.details {
   margin-top: 20px;
+  max-width: 658px;
 }
 
-.hero .details p {
+.details p {
   font-size: 20px;
   font-weight: 500;
 }
 
-.hero .details span {
+.details span {
   font-size: 30px;
   font-weight: 500;
   color: var(--primary);
 }
 
-.hero .details p:nth-child(1) {
+.details p:nth-child(1) {
   margin-bottom: 30px;
 }
 
 .cta-buttons {
   display: flex;
-  position: fixed;
-  bottom: 0;
+  /* position: fixed; */
+  /* bottom: 0; */
   width: 100%;
-  padding-bottom: 2px;
+  max-width: 900px;
+  margin-top: 120px;
+  /* padding-bottom: 2px; */
 }
 
 .cta-buttons a {
@@ -68,4 +68,10 @@
   border: 1px solid var(--white);
   background: var(--background);
   padding: 20px 32px;
+}
+
+@media only screen and (min-device-width: 568px) {
+  .cta-buttons a {
+    margin-right: 20px;
+  }
 }
