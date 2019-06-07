@@ -49,19 +49,13 @@ export default class WeightsTemplate extends Component {
     return details
   }
 
-  renderWarmUp = workout => {
-    const lines = workout.warm_up.split('\n');
-    const html = lines.map((line, i) => <p key={i}>{line}</p>)
-    return html;
-  }
-
   render() {
     const {workout} = this.props
     return (
       <>
         <div className='workout-group'>
           <h3>Warm Up</h3>
-          {this.renderWarmUp(workout)}
+          {workout.warm_up}
         </div>
 
         <div className='workout-group'>
