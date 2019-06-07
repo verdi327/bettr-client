@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "bettr-fit",
-  "alias": "bettr-fit",
+  "alias": "bettr.fit",
   "build": {
     "env": {
       "REACT_APP_API_ENDPOINT": "https://bettr-fit-api.herokuapp.com/api",

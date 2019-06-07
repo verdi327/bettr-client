@@ -23,9 +23,8 @@ class RegistrationForm extends Component {
     this.setState({error: null})
     const {full_name, email, sex, password} = this.state
     const newUser = {full_name, email, sex, password}
-
+    const {setLoading} = this.props.appContext
     try {
-      const {setLoading} = this.props.appContext
       setLoading(true)
       const savedUser = await AuthApiService.createUser(newUser)
       this.context.login(savedUser.authToken)
@@ -34,8 +33,12 @@ class RegistrationForm extends Component {
       setLoading(true)
       // this will load /workouts which will then re-direct to /new-cycle as there are no workouts
     } catch(err) {
-      this.setState({error: err.message})
+      this.setState({error: err.message}, setLoading(false))
     }
+  }
+
+  componentWillUnmount() {
+    this.setState({error: null})
   }
 
   handleChange = ({target: {name, value}}) => {
