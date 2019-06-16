@@ -4,20 +4,33 @@ import WeightsTemplate from '../../components/WeightsTemplate/WeightsTemplate'
 import CardioTemplate from '../../components/CardioTemplate/CardioTemplate'
 import HybridTemplate from '../../components/HybridTemplate/HybridTemplate'
 import RestTemplate from '../../components/RestTemplate/RestTemplate'
-import WorkoutApiService from '../../services/workout-api-service';
+import WorkoutApiService from '../../services/workout-api-service'
+import { withAppContext } from '../../contexts/AppContext'
+import PageError from '../../components/PageError/PageError'
 
 
-export default class WorkoutPage extends Component {
+class WorkoutPage extends Component {
   state = {
     workout: {},
-    tabActive: 'Details'
+    tabActive: 'Details',
+    error: null
   }
 
   async componentDidMount() {
+    const {setLoading} = this.props.appContext
     const {match} = this.props
     const workout_id = Number(match.params.workout_id)
-    const workout = await WorkoutApiService.show(workout_id);
-    this.setState({workout})
+    setLoading(true);
+    try {
+      const workout = await WorkoutApiService.show(workout_id);
+      this.setState({workout}, setLoading(false));
+    } catch(err) {
+      this.setState({error: err.message}, setLoading(false))
+    }
+  }
+
+  componentWillUnmount() {
+    this.setState({error: null})
   }
 
   setActive = (e) => {
@@ -77,25 +90,32 @@ export default class WorkoutPage extends Component {
   }
 
   render() {
-    const {workout, tabActive} = this.state
-    return (
-      <section className='WorkoutPage'>
-        <div className='workout-day-header'>
-          <span>Day {(workout.week*7) - (7-workout.day)} of 84</span>&nbsp;-&nbsp;
-          <span>{workout.type} {workout.sub_type}</span>
-        </div>
-        <div className='workout-sub-nav'>
-          <button className={`button full ${tabActive === 'Details' ? 'tabActive' : ''}`} onClick={this.setActive}>Details</button>
-          <button className={`button full ${tabActive === 'Focus' ? 'tabActive' : ''}`} onClick={this.setActive}>Focus</button>
-        </div>
-        <section>
-          {tabActive === 'Details'
-            ? this.renderWorkoutDetails()
-            : this.renderWorkoutFocus()
-          }
-          {this.renderMarkComplete()}
+    const {workout, tabActive, error} = this.state
+    if (error) {
+      return <PageError page='workout'/>
+    } else {
+      return (
+        <section className='WorkoutPage'>
+          <div className='workout-day-header'>
+            <span>Day {(workout.week*7) - (7-workout.day)} of 84</span>&nbsp;-&nbsp;
+            <span>{workout.type} {workout.sub_type}</span>
+          </div>
+          <div className='workout-sub-nav'>
+            <button className={`button full ${tabActive === 'Details' ? 'tabActive' : ''}`} onClick={this.setActive}>Details</button>
+            <button className={`button full ${tabActive === 'Focus' ? 'tabActive' : ''}`} onClick={this.setActive}>Focus</button>
+          </div>
+          <section>
+            {tabActive === 'Details'
+              ? this.renderWorkoutDetails()
+              : this.renderWorkoutFocus()
+            }
+            {this.renderMarkComplete()}
+          </section>
         </section>
-      </section>
-    )
+      )
+    }
+    
   }
 }
+
+export default withAppContext(WorkoutPage);
