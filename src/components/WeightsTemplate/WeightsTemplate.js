@@ -71,10 +71,20 @@ export default class WeightsTemplate extends Component {
 
   renderMain = (workout) => {
     const details =  workout.main.map((exercise, i) => {
-      return (
-        <p key={i}>{workout.main_reps} {this.linkify(exercise)}</p>
-      )
+      if (workout.main_rep_scheme === 'cluster') {
+        return (
+          <p key={i+1}>{this.linkify(exercise)}</p>
+        )
+      } else {
+        return (
+          <p key={i}>{workout.main_reps} {this.linkify(exercise)}</p>
+        )
+      }
     })
+
+    if (workout.main_rep_scheme === 'cluster') {
+      details.unshift(<p key={0}>{workout.main_reps}</p>)
+    }
 
     details.push(<p key={details.length}>rest {workout.main_rest}</p>)
     details.push(<p key={details.length+1}>x {workout.main_sets} sets</p>)
