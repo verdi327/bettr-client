@@ -14,13 +14,17 @@
         "dest": "/static/$1"
       },
       {
-        "src": ".*",
-        "dest": "/index.html"
-      },
-      {
         "src": "^/manifest.json$",
         "dest": "/manifest.json",
         "headers": {"Content-Type": "application/json"}
+      },
+      {
+        "src": "^\/(.*\\.(png|ico|jpg|xml))$",
+        "dest": "/public/$1"
+      },
+      {
+        "src": ".*",
+        "dest": "/index.html"
       }
   ]
 }
