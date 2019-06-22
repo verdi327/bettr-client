@@ -1,7 +1,9 @@
 # Bettr Client
 Fitness training simplified.  Automatically generate 12 week training programs individualized to your training level, sex and training availability.
 
-This repo is the front-end client, built in React.  You can see the app live at `https://bettr.fit`
+This repo is the front-end client, built in React.  You can see the app live at [https://bettr.fit](https://bettr.fit)
+
+The app is meant for mobile use, but will still scale for desktop viewing.
 
 ## Introduction
 
@@ -9,7 +11,7 @@ With so much information available on the web and social media sites around trai
 
 ## Quick App Demo
 
-something here
+![Imgur](https://i.imgur.com/OyZdffc.gifv)
 
 ## Technology
 
