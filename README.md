@@ -11,7 +11,7 @@ With so much information available on the web and social media sites around trai
 
 ## Quick App Demo
 
-![Imgur](https://i.imgur.com/OyZdffc.gifv)
+![Imgur](https://i.imgur.com/OyZdffc.gif)
 
 ## Technology
 
