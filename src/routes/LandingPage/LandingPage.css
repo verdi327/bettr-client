@@ -1,20 +1,19 @@
-.LandingPage {
-  background: url('./landing-page-bg-1.png') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
 .LandingPage section {
   height: 100vh;
 }
 
 .LandingPage #above-the-fold {
+  background: url('./landing-page-bg-1.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
   display: flex;
   align-items: center;
   flex-direction: column;
   padding: 30px;
+  margin-top:0;
 }
 
 .hero h1 {
@@ -75,3 +74,79 @@
     margin-right: 20px;
   }
 }
+
+.LandingPage section {
+  display: flex;
+  padding: 30px;
+  margin-top:30px;
+  margin-bottom: 30px;
+}
+
+.LandingPage section .section-header {
+  flex: 1;
+}
+
+.LandingPage section .section-header h2 {
+  font-size: 2.5em;
+}
+
+.LandingPage section .section-content {
+  flex: 2;
+}
+
+.LandingPage section .section-content p {
+  margin-bottom: 30px;
+  line-height: 20px;
+}
+
+.LandingPage aside {
+  height: 50vh;
+  background: url('./quote-aside-bg.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+aside .quote  {
+  font-size: 1.7em;
+  margin: 0 45px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+aside .quote::before {
+  content: '\201C';
+}
+
+aside .quote::after {
+  content: '\201D';
+}
+
+section#cta {
+  height: 75vh;
+}
+
+@media only screen and (max-device-width: 568px) {
+  .LandingPage section {
+    flex-direction: column;
+  }
+
+  .LandingPage section .section-header {
+    flex: 0;
+    margin-bottom: 30px;
+  }
+  
+  .LandingPage section .section-header h2 {
+    font-size: 2em;
+  }
+  
+  .LandingPage section .section-content {
+    flex: 0;
+  }
+}
+
