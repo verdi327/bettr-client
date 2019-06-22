@@ -1,5 +1,5 @@
 .LandingPage section {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .LandingPage #above-the-fold {
@@ -51,12 +51,9 @@
 
 .cta-buttons {
   display: flex;
-  /* position: fixed; */
-  /* bottom: 0; */
   width: 100%;
   max-width: 900px;
   margin-top: 120px;
-  /* padding-bottom: 2px; */
 }
 
 .cta-buttons a {
@@ -96,7 +93,12 @@
 
 .LandingPage section .section-content p {
   margin-bottom: 30px;
-  line-height: 20px;
+  line-height: 22px;
+  font-size: 20px
+}
+
+.LandingPage section .section-content h4 {
+  font-size:22px;
 }
 
 .LandingPage aside {

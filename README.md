@@ -15,3 +15,5 @@ This is only the front end client, so develop locally you'll need the backend se
 To get the backend up and running see [https://github.com/verdi327/bettr-server](https://github.com/verdi327/bettr-server)
 
 Deployments are handled through Zeit and can be run via `npm run deploy`
+
+[bettr.fit](https://i.imgur.com/OyZdffc.gifv)
