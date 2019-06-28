@@ -5,6 +5,13 @@ This repo is the front-end client, built in React.  You can see the app live at 
 
 The app is meant for mobile use, but will still scale for desktop viewing.
 
+To check out the app, I suggest you create a dummy account so you can see the onboarding experience.  But, if you just want to view what a program looks like, you can use the demo account.
+
+#### Demo Account Details
+
+* email: s.curry@warriors.com
+* password: foobar
+
 ## Introduction
 
 With so much information available on the web and social media sites around training advice, it's hard to separate fact from fiction. Bettr cuts through the BS a builds 12 week training programs that use evidence based science to create plans focus balanced, full body training. If you want both better body composition, performance and longevity - bettr is your plan.
