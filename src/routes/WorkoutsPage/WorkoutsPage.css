@@ -21,6 +21,7 @@ section.WorkoutsPage{
   position: fixed;
   bottom: 0;
   overflow: hidden;
+  max-width: 600px;
   width: 100%;
 }
 

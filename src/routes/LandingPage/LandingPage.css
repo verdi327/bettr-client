@@ -14,6 +14,7 @@
   flex-direction: column;
   padding: 30px;
   margin-top:0;
+  max-width: 100%;
 }
 
 .hero h1 {
@@ -66,17 +67,29 @@
   padding: 20px 32px;
 }
 
-@media only screen and (min-device-width: 568px) {
+@media (min-width: 568px) {
   .cta-buttons a {
     margin-right: 20px;
   }
 }
 
+@media (max-width: 500px) {
+  .cta-buttons {
+    flex-direction: column;
+    margin-top: 50px;
+  }
+  .cta-buttons a {
+    margin: 8px 0;
+  }
+}
+
 .LandingPage section {
   display: flex;
-  padding: 30px;
-  margin-top:30px;
-  margin-bottom: 30px;
+  justify-content: center;
+  margin: 70px auto;
+  max-width: 1000px;
+  padding-left:30px;
+  padding-right: 30px;
 }
 
 .LandingPage section .section-header {
@@ -130,10 +143,10 @@ aside .quote::after {
 }
 
 section#cta {
-  height: 75vh;
+  min-height: 75vh;
 }
 
-@media only screen and (max-device-width: 568px) {
+@media (max-width: 568px) {
   .LandingPage section {
     flex-direction: column;
   }
